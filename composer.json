@@ -1,0 +1,42 @@
+{
+    "name": "anytech/silverstripe-secretfield",
+    "description": "Masked secret form field with an admin-only reveal button for SilverStripe SiteConfig secrets (API keys, tokens).",
+    "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/anytech/silverstripe-secretfield",
+    "keywords": ["silverstripe", "secret", "form-field", "api-key", "mask"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kayne Middleton",
+            "email": "kayne@anytech.ca",
+            "homepage": "https://anytech.ca",
+            "role": "Maintainer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.3",
+        "ext-json": "*",
+        "silverstripe/framework": "^6.1",
+        "silverstripe/siteconfig": "^6",
+        "silverstripe/vendor-plugin": "^3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anytech\\SecretField\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name": "silverstripe-secretfield",
+        "expose": [
+            "client"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
+    }
+}
