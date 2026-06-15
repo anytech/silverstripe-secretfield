@@ -30,6 +30,8 @@ class SecretField extends TextField
         Requirements::javascript('anytech/silverstripe-secretfield:client/js/secret-field.js');
         Requirements::css('anytech/silverstripe-secretfield:client/css/secret-field.css');
 
+        SecretRevealController::register($this->getName());
+
         $stored = (string)$this->dataValue();
         $hasValue = $stored !== '';
         $hint = $hasValue ? 'Saved (ends ' . substr($stored, -4) . ') - leave blank to keep' : 'Enter value';
