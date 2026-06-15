@@ -15,22 +15,17 @@ use SilverStripe\View\Requirements;
  *
  * Reveal works on disabled fields too (e.g. autofilled tokens) since it only reads.
  */
-class SecretField extends TextField
-{
+class SecretField extends TextField {
     protected bool $multiline = false;
 
-    public function setMultiline(bool $multiline): static
-    {
+    public function setMultiline(bool $multiline): static {
         $this->multiline = $multiline;
         return $this;
     }
 
-    public function Field($properties = [])
-    {
+    public function Field($properties = []) {
         Requirements::javascript('anytech/silverstripe-secretfield:client/js/secret-field.js');
         Requirements::css('anytech/silverstripe-secretfield:client/css/secret-field.css');
-
-        SecretRevealController::register($this->getName());
 
         $stored = (string)$this->dataValue();
         $hasValue = $stored !== '';
@@ -61,8 +56,7 @@ class SecretField extends TextField
         return DBHTMLText::create($this->getName() . '_Field')->setValue($html);
     }
 
-    public function saveInto($record): void
-    {
+    public function saveInto($record): void {
         // Blank submission means "leave unchanged" - never wipe a stored secret.
         if ($this->value === null || $this->value === '') {
             return;
